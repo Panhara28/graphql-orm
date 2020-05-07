@@ -6,7 +6,7 @@ import { buildSchema } from "type-graphql";
 import { BookResolver } from "./src/resolvers/BookResolver";
 
 async function main() {
-  await createConnection();
+  const connection = await createConnection();
   const schema = await buildSchema({ resolvers: [BookResolver] });
   const server = new ApolloServer({ schema });
   await server.listen(4000);
